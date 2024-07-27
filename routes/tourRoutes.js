@@ -3,6 +3,7 @@ const router = express.Router();
 const Tour = require('../models/tour');
 const User = require('../models/user'); // Ensure the User model is imported
 
+
 // Middleware to check if the user is logged in
 function isLoggedIn(req, res, next) {
   if (req.session.user) {
@@ -61,6 +62,32 @@ router.get('/cart', isLoggedIn, async (req, res) => {
     res.render('cart', { cart: user.cart });
   } catch (err) {
     res.status(500).send('Error retrieving cart.');
+  }
+});
+
+// Remove a tour from the cart
+router.post('/cart/:tourId/remove', isLoggedIn, async (req, res) => {
+
+  try {
+    const tourId = req.params.tourId;
+    const userId = req.session.user._id;
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).send('User not found.');
+    }
+
+    // Remove the tour from the cart
+    user.cart = user.cart.filter(item => item.tourId.toString() !== tourId);
+
+    // Save the updated user document
+    await user.save();
+    res.redirect('/cart');
+  } catch (err) {
+    console.error('Error removing from cart:', err);
+    res.status(500).send('Error removing from cart.');
   }
 });
 
