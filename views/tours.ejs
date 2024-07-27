@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Tours</title>
+</head>
+<body>
+    <header>
+        <h1>Available Tours</h1>
+        <a href="/">Home</a>
+        <% if (user) { %>
+            <a href="/cart">View Cart</a>
+        <% } %>
+    </header>
+    <main>
+        <ul>
+            <% tours.forEach(tour => { %>
+                <li>
+                    <h2><%= tour.name %></h2>
+                    <p><%= tour.description %></p>
+                    <p>Price: $<%= tour.price %></p>
+                    <p>Available Slots: <%= tour.availableSlots %></p>
+                    <% if (user) { %>
+                        <form action="/tours/<%= tour._id %>/add-to-cart" method="post">
+                            <button type="submit">Add to Cart</button>
+                        </form>
+                    <% } else { %>
+                        <p><a href="/login">Log in to add to cart</a></p>
+                    <% } %>
+                </li>
+            <% }); %>
+        </ul>
+    </main>
+</body>
+</html>

@@ -1,44 +1,43 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
 
-// Middleware to parse JSON requests
-app.use(express.json());
+// Middleware to parse form data
+app.use(express.urlencoded({ extended: true }));
 
-// Define a schema and model for MongoDB
-const itemSchema = new mongoose.Schema({
-  name: String,
-  price: Number,
-  quantity: Number,
+// Serve static files
+app.use(express.static('public'));
+
+// Set EJS as the template engine
+app.set('view engine', 'ejs');
+
+// MongoDB session store
+const store = new MongoDBStore({
+  uri: process.env.MONGODB_URI,
+  collection: 'sessions'
 });
 
-const Item = mongoose.model('Item', itemSchema);
+// Configure sessions
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: store
+}));
 
-// Basic route to test the server
-app.get('/', (req, res) => {
-  res.send('Welcome to the Node.js and MongoDB app!');
-});
+// Routes
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/userRoutes');
+const toursRouter = require('./routes/tourRoutes');
 
-// Route to get all items
-app.get('/items', async (req, res) => {
-  try {
-    const items = await Item.find();
-    res.json(items);
-  } catch (error) {
-    res.status(500).json({ message: 'Error fetching items' });
-  }
-});
-
-// Route to add a new item
-app.post('/items', async (req, res) => {
-  const newItem = new Item(req.body);
-  try {
-    const savedItem = await newItem.save();
-    res.status(201).json(savedItem);
-  } catch (error) {
-    res.status(400).json({ message: 'Error adding item' });
-  }
-});
+app.use('/', indexRouter);
+app.use('/', usersRouter);
+app.use('/', toursRouter);
 
 module.exports = app;
