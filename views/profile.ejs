@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>User Profile</title>
+</head>
+<body>
+    <header>
+        <h1>Your Profile</h1>
+        <nav>
+            <a href="/tours">Back to Tours</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <% if (!editMode) { %> <!-- View Mode -->
+                <h2>Profile Details</h2>
+                <p><strong>Username:</strong> <%= user.username %></p>
+                <p><strong>Email:</strong> <%= user.email %></p>
+                <a href="/profile?edit=true">Edit</a> <!-- Edit Button -->
+            <% } else { %> <!-- Edit Mode -->
+                <h2>Edit Profile</h2>
+                <form action="/profile" method="post">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" value="<%= user.username %>" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" value="<%= user.email %>" required>
+
+                    <button type="submit">Save Changes</button>
+                    <a href="/profile">Cancel</a> <!-- Cancel Editing -->
+                </form>
+            <% } %>
+        </section>
+        <section>
+            <h2>Change Password</h2>
+            <form action="/profile/change-password" method="post">
+                <label for="currentPassword">Current Password:</label>
+                <input type="password" name="currentPassword" id="currentPassword" required>
+
+                <label for="newPassword">New Password:</label>
+                <input type="password" name="newPassword" id="newPassword" required>
+
+                <button type="submit">Change Password</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
