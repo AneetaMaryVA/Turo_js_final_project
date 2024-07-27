@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>My Trips</title>
+</head>
+<body>
+    <header>
+        <h1>My Trips</h1>
+        <nav>
+            <a href="/trips/new">Create New Trip</a>
+            <a href="/profile">Profile</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Your Trips</h2>
+        <ul>
+            <% trips.forEach(trip => { %>
+                <li>
+                    <strong><%= trip.name %></strong><br>
+                    <span>Start Date: <%= new Date(trip.startDate).toLocaleDateString() %></span><br>
+                    <span>End Date: <%= new Date(trip.endDate).toLocaleDateString() %></span><br>
+                    <span>Destination: <%= trip.destination %></span><br>
+                    <a href="/trips/<%= trip._id %>/edit">Edit</a>
+                    <form action="/trips/<%= trip._id %>/delete" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    </main>
+</body>
+</html>

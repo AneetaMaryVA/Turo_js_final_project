@@ -9,23 +9,26 @@
 <body>
     <header>
         <h1>Welcome to Tour Booking App</h1>
-        <nav>
-            <a href="/tours">View Tours</a> <!-- Ensure this is outside the if block -->
-            <% if (user) { %>
+        <% if (user) { %>
+            <nav>
+                <a href="/tours">View Tours</a>
                 <a href="/cart">View Cart</a>
-                <a href="/profile">Profile</a>
+                <a href="/profile">Profile</a> <!-- Profile Link -->
+                <a href="/trips">Manage Trips</a> <!-- Manage Trips Link -->
                 <form action="/logout" method="post" style="display: inline;">
                     <button type="submit">Logout</button>
                 </form>
-            <% } else { %>
+            </nav>
+        <% } else { %>
+            <nav>
+                <a href="/tours">View Tours</a>
                 <a href="/login">Login</a>
                 <a href="/register">Register</a>
-            <% } %>
-        </nav>
+            </nav>
+        <% } %>
     </header>
     <main>
         <h2>Explore Our Tours</h2>
-        <a href="/tours">Explore Tours</a> <!-- Button to explore tours -->
     </main>
 </body>
 </html>

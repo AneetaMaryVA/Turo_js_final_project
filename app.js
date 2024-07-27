@@ -36,10 +36,12 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/userRoutes');
 const toursRouter = require('./routes/tourRoutes');
 const profileRouter = require('./routes/profileRoutes');
+const tripRouter = require('./routes/tripRoutes');
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
 app.use('/', toursRouter);
-app.use('/', profileRouter);
+app.use('/', profileRouter);  
+app.use('/', tripRouter);
 
 module.exports = app;
