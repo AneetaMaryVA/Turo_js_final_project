@@ -1,0 +1,116 @@
+
+:root {
+    --font-roboto-thin: "Roboto", sans-serif;
+    --font-roboto-light: "Roboto", sans-serif;
+    --font-roboto-regular: "Roboto", sans-serif;
+    --font-roboto-medium: "Roboto", sans-serif;
+    --font-roboto-bold: "Roboto", sans-serif;
+    --font-roboto-black: "Roboto", sans-serif;
+    --font-roboto-thin-italic: "Roboto", sans-serif;
+    --font-roboto-light-italic: "Roboto", sans-serif;
+    --font-roboto-regular-italic: "Roboto", sans-serif;
+    --font-roboto-medium-italic: "Roboto", sans-serif;
+    --font-roboto-bold-italic: "Roboto", sans-serif;
+    --font-roboto-black-italic: "Roboto", sans-serif;
+    --font-anton-sc: "Anton SC", sans-serif; /* Define font variable */
+}
+
+body {
+    font-family: var(--font-roboto-light);
+    background-color: var(--mint-cream);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+span {
+    font-family: var(--font-anton-sc);
+    color: #EB3678;
+}
+
+header h1 {
+    margin: 0;
+    font-family: var(--font-anton-sc);
+    letter-spacing: 1px;
+    font-size: 2rem;
+}
+
+.login-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px); /* Adjust for header height */
+}
+
+.welcome-message {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.welcome-message h2 {
+    font-family: var(--font-anton);
+    font-size: 2rem;
+    color: #333;
+}
+
+.login-form {
+    background-color: var(--celeste);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    font-family: var(--font-roboto-medium);
+}
+
+.form-group input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-family: var(--font-roboto-light);
+    font-size: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: var(--font-anton-sc);
+    letter-spacing: 1px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid #333;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: var(--mimi-pink);
+    color: black;
+}

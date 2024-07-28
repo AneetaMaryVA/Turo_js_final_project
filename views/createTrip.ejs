@@ -1,34 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <title>Create Trip</title>
-</head>
-<body>
-    <header>
-        <h1>Create a New Trip</h1>
-        <nav>
-            <a href="/">Back to Trips</a>
-        </nav>
-    </header>
-    <main>
-        <form action="/trips" method="post">
-            <label for="name">Trip Name:</label>
-            <input type="text" name="name" id="name" required>
+<% layout('layout') %>
 
-            <label for="startDate">Start Date:</label>
-            <input type="date" name="startDate" id="startDate" required>
-
-            <label for="endDate">End Date:</label>
-            <input type="date" name="endDate" id="endDate" required>
-
-            <label for="destination">Destination:</label>
-            <input type="text" name="destination" id="destination" required>
-
-            <button type="submit">Create Trip</button>
-        </form>
-    </main>
-</body>
-</html>
+<h1>Create a New Trip</h1>
+<form action="/trips" method="post">
+    <div class="mb-3">
+        <label for="name" class="form-label">Trip Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="destination" class="form-label">Destination:</label>
+        <input type="text" class="form-control" id="destination" name="destination" required>
+    </div>
+    <div class="mb-3">
+        <label for="startDate" class="form-label">Start Date:</label>
+        <input type="date" class="form-control" id="startDate" name="startDate" required>
+    </div>
+    <div class="mb-3">
+        <label for="endDate" class="form-label">End Date:</label>
+        <input type="date" class="form-control" id="endDate" name="endDate" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea class="form-control" id="description" name="description" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <input type="number" class="form-control" id="price" name="price" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Trip</button>
+</form>

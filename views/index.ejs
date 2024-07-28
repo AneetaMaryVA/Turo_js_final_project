@@ -4,31 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton+SC&display=swap" rel="stylesheet">
     <title>Tour Booking App</title>
 </head>
 <body>
     <header>
-        <h1>Welcome to Tour Booking App</h1>
-        <% if (user) { %>
-            <nav>
+        <nav>
+            <% if (user) { %>
                 <a href="/tours">Explore Tours</a>
                 <a href="/cart">View Cart</a>
                 <a href="/profile">Profile</a>
-                <a href="/trips">Manage Trips</a> <!-- Add Manage Trips Link -->
+                <a href="/trips">Manage Trips</a>
                 <form action="/logout" method="post" style="display: inline;">
                     <button type="submit">Logout</button>
                 </form>
-            </nav>
-        <% } else { %>
-            <nav>
+            <% } else { %>
                 <a href="/tours">Explore Tours</a>
                 <a href="/login">Login</a>
                 <a href="/register">Register</a>
-            </nav>
-        <% } %>
+            <% } %>
+        </nav>
     </header>
     <main>
-        <h2>Welcome to our tour booking system</h2>
+        <div class="hero">
+            <h1>Welcome to TURO</h1>
+            <a href="/tours" class="explore-btn">Explore Tours</a>
+        </div>
     </main>
 </body>
 </html>

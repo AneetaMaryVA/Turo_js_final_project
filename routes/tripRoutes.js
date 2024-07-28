@@ -12,8 +12,9 @@ function isLoggedIn(req, res, next) {
 }
 // Render the createTrips page
 router.get('/trips', isLoggedIn, (req, res) => {
-    res.render('createTrip', { user: req.session.user });
+    res.render('createTrips', { user: req.session.user });
 });
+
 // Create a new trip and add it to tours
 router.post('/trips', isLoggedIn, async (req, res) => {
     console.log('trip route');

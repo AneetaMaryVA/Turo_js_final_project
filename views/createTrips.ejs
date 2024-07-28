@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/createTrip.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <title>Create Trip</title>
+</head>
+<body>
+    <header>
+        <h1>Create a New Trip</h1>
+        <nav>
+            <a href="/tours">Explore Tours</a>
+            <a href="/cart">View Cart</a>
+            <a href="/profile">Profile</a>
+            <form action="/logout" method="post" style="display: inline;">
+                <button type="submit">Logout</button>
+            </form>
+        </nav>
+    </header>
+    <main class="create-trip-main">
+        <form action="/trips" method="post" class="create-trip-form">
+            <label for="name">Trip Name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="startDate">Start Date:</label>
+            <input type="date" name="startDate" id="startDate" required>
+
+            <label for="endDate">End Date:</label>
+            <input type="date" name="endDate" id="endDate" required>
+
+            <label for="destination">Destination:</label>
+            <input type="text" name="destination" id="destination" required>
+
+            <button type="submit" class="btn">Create Trip</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,122 @@
+:root {
+    --font-roboto-thin: "Roboto", sans-serif;
+    --font-roboto-light: "Roboto", sans-serif;
+    --font-roboto-regular: "Roboto", sans-serif;
+    --font-roboto-medium: "Roboto", sans-serif;
+    --font-roboto-bold: "Roboto", sans-serif;
+    --font-roboto-black: "Roboto", sans-serif;
+    --font-roboto-thin-italic: "Roboto", sans-serif;
+    --font-roboto-light-italic: "Roboto", sans-serif;
+    --font-roboto-regular-italic: "Roboto", sans-serif;
+    --font-roboto-medium-italic: "Roboto", sans-serif;
+    --font-roboto-bold-italic: "Roboto", sans-serif;
+    --font-roboto-black-italic: "Roboto", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-roboto-light);
+    color: #333;
+    background-color: var(--mint-cream);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-family: var(--font-roboto-bold);
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+header nav a {
+    font-family: var(--font-roboto-medium);
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 2px solid #333;
+}
+
+header nav a:hover {
+    color: black;
+}
+
+/* Cart List Styles */
+.cart-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Card Styles */
+.cart-card {
+    background-color: var(--mint-cream);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-card h2 {
+    font-family: var(--font-roboto-regular);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.cart-card p {
+    font-family: var(--font-roboto-light);
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.cart-card form button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: var(--font-roboto-bold);
+    font-size: 1rem;
+    border: 2px solid #333;
+    cursor: pointer;
+}
+
+.cart-card form button:hover {
+    background-color: #F5004F;
+    color: white;
+}
+
+/* Button Styles */
+form button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--mimi-pink);
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: var(--font-roboto-bold);
+    font-size: .9rem;
+    border: 2px solid #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+form button:hover {
+    background-color: var(--lavender-pink);
+    color: #000;
+}
+
