@@ -1,8 +1,9 @@
 const express = require('express');
-const router = express.Router();
 const Tour = require('../models/tour');
-const User = require('../models/user'); // Ensure the User model is imported
+const User = require('../models/user'); 
+const Trip = require('../models/trip'); 
 
+const router = express.Router();
 
 // Middleware to check if the user is logged in
 function isLoggedIn(req, res, next) {
@@ -12,18 +13,38 @@ function isLoggedIn(req, res, next) {
   res.redirect('/login');
 }
 
-// View all tours
-router.get('/tours', async (req, res) => {
+// // View all tours
+// router.get('/tours', async (req, res) => {
+//   try {
+//     const tours = await Tour.find();
+//     res.render('tours', { tours, user: req.session.user });
+//   } catch (err) {
+//     res.status(500).send('Error retrieving tours.');
+//   }
+// });
+
+// View all tours (including trips)
+router.get('/tours', isLoggedIn, async (req, res) => {
   try {
-    const tours = await Tour.find();
-    res.render('tours', { tours, user: req.session.user });
+      // Fetch tours from the Tour model
+      const tours = await Tour.find();
+
+      // Fetch trips from the Trip model
+      const trips = await Trip.find();
+
+      // Combine both tours and trips
+      const allTours = tours.concat(trips);
+
+      res.render('tours', { tours: allTours, user: req.session.user });
   } catch (err) {
-    res.status(500).send('Error retrieving tours.');
+      console.error('Error retrieving tours:', err);
+      res.status(500).send('Error retrieving tours.');
   }
 });
 
 // Add a tour to the cart
 router.post('/tours/:id/add-to-cart', isLoggedIn, async (req, res) => {
+  console.log("add to cart");
   try {
     const tourId = req.params.id;
     const userId = req.session.user._id;
@@ -67,7 +88,6 @@ router.get('/cart', isLoggedIn, async (req, res) => {
 
 // Remove a tour from the cart
 router.post('/cart/:tourId/remove', isLoggedIn, async (req, res) => {
-
   try {
     const tourId = req.params.tourId;
     const userId = req.session.user._id;

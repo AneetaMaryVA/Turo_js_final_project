@@ -13,6 +13,7 @@ function isLoggedIn(req, res, next) {
 
 // Display user profile
 router.get('/profile', isLoggedIn, async (req, res) => {
+  console.log('Profile route');
   try {
     const user = await User.findById(req.session.user._id);
     const editMode = req.query.edit === 'true'; // Determine if in edit mode
