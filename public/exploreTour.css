@@ -156,3 +156,25 @@ main {
     /* border-color: var(--mimi-pink); */
 }
 
+
+/* maps */
+.view-on-map-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: whitesmoke;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: var(--font-roboto-bold);
+    font-size: .9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid #333;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .view-on-map-btn:hover {
+    background-color: var(--mint-cream);
+    color: black;
+  }
+  
