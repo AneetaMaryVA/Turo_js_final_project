@@ -22,6 +22,7 @@
             <% } else { %>
                 <% cart.forEach(item => { %>
                     <li class="cart-card">
+                        <img src="<%= item.tourId.imageUrl %>" alt="<%= item.tourId.name %>" class="cart-card-image">
                         <h2><%= item.tourId.name %></h2>
                         <p>Price: $<%= item.tourId.price %></p>
                         <p>Quantity: <%= item.quantity %></p>
