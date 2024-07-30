@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/checkout.css">
+    <title>Checkout</title>
+</head>
+<body>
+    <header>
+        <h1>Checkout Overview</h1>
+    </header>
+    <main class="checkout-main">
+        <div class="checkout-container">
+            <div class="checkout-items">
+                <% if (cart.length > 0) { %>
+                    <% cart.forEach(item => { %>
+                        <div class="checkout-item">
+                            <h2><%= item.tourId.name %></h2>
+                            <p>Price: $<%= item.tourId.price %></p>
+                            <p>Quantity: <%= item.quantity %></p>
+                            <p>Subtotal: $<%= item.tourId.price * item.quantity %></p>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>Your cart is empty.</p>
+                <% } %>
+                <a href="/tours" class="btn back-to-tours">Back to Tours</a>
+            </div>
+            <div class="checkout-summary">
+                <div class="checkout-total">
+                    <h3>Total Cost: $<%= totalCost %></h3>
+                </div>
+                <a href="/checkout" class="btn checkout-btn">Checkout</a>
+                <a href="/cart" class="btn back-to-cart">Back to Cart</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

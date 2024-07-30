@@ -37,11 +37,13 @@ const usersRouter = require('./routes/userRoutes');
 const toursRouter = require('./routes/tourRoutes');
 const profileRouter = require('./routes/profileRoutes');
 const tripRouter = require('./routes/tripRoutes');
+const checkoutRouter = require('./routes/checkoutRoute');
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
 app.use('/', toursRouter);
 app.use('/', profileRouter);  
 app.use('/', tripRouter);
+app.use('/checkout', checkoutRouter);
 
 module.exports = app;

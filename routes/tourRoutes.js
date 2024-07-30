@@ -111,4 +111,24 @@ router.post('/cart/:tourId/remove', isLoggedIn, async (req, res) => {
   }
 });
 
+// View checkout
+router.get('/checkout', isLoggedIn, async (req, res) => {
+  try {
+    const user = await User.findById(req.session.user._id).populate('cart.tourId');
+
+    if (!user) {
+      return res.status(404).send('User not found.');
+    }
+
+    // Calculate total cost
+    const totalCost = user.cart.reduce((total, item) => total + item.tourId.price * item.quantity, 0);
+
+    res.render('checkout', { cart: user.cart, totalCost });
+  } catch (err) {
+    console.error('Error retrieving checkout:', err);
+    res.status(500).send('Error retrieving checkout.');
+  }
+});
+
+
 module.exports = router;
